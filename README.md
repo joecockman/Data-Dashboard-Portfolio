@@ -31,6 +31,21 @@ The purpose of this dashboard is to allow users to delve deeper into the data be
 
 ![Most Streamed Artists Preview](Screenshots/Tracks-per-Month.png)
 
+To create the Release Month buttons filter, I moved 'Release Month' into rows and changed it's type to continuous. 
+
+I typed '1' into columns and changed the measure to minimum, assigning all the bars the same length. 
+
+I  selected 'Entire View' from the view dropdown menu so that the bars vertically filled the sheet. 
+
+I then edited the x-axis, selecting a fixed range with the fixed end set to 1. This was to make the bars take up the horizontal length of the sheet. 
+
+Next, I hid the axis titles and dragged  'Release Month' onto label, labelling each button with a month.
+
+Finally, I added the sheet to my dashboard and selected 'use as filter'. In this way when a month is selected the other visuals will adjust accordingly.
+
+#  Name Search
+
+
 # Most Streamed Artists
 
 ![Most Streamed Artists Preview](Screenshots/Most-Streamed-Artists.png)
@@ -58,6 +73,15 @@ This calculated field specifies that if the search bar is empty or the word 'non
 # Most Streamed Songs
 
 ![Most Streamed Songs Preview](Screenshots/Most-Streamed-Songs.png)
+
+To create this bar chart I dragged 'Track Name' into rows and added 'Streams' into the rows, changing the measure to SUM.
+
+I then once again moved 2 of my calculated fields into the 'filters' tab. These were:
+
+- J - Monthly Top  5 Streams
+- Name Search
+
+Both of these codes are discussed above.
 
 #  Highest Energy Songs
 
