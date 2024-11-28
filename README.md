@@ -47,6 +47,25 @@ Finally, I added the sheet to my dashboard and selected 'use as filter'. In this
 
 ![Artist Name Search Preview](Screenshots/Artist-Name-Search.png)
 
+I created search bar functionality by creating a parameter in my dashboard. The data type was set to 'string' and then I added the values from the 'Track Name' column. The allowable values was set to 'list'. 
+
+Once I created this parameter I then formated it to be a 'Type in' parameter which allows users to type in their query.
+
+I then created a calculated field ton take the input to the search bar and filter the dashboard accordingly:
+
+Name Search: 
+
+```
+IF ISNULL([Artist Name Search]) OR [Artist Name Search] = "none" THEN TRUE
+ELSE
+  CONTAINS(LOWER([Artist Name]), LOWER([Artist Name Search]))
+END
+```
+
+This calculated field specifies that if the search bar is empty or the word 'none' is typed then it will be set to TRUE, meaning that no filter will be applied and all available data will be shown. 
+
+LOWER([Artist Name Search]) converts whatever is typed into the search bar into lowercase. the 'CONTAINS' clause then compares this to the artist name column, which has also been converted to lower case, and if it finds a match it will filter the dashboard by that artist's name.
+
 # Most Streamed Artists
 
 ![Most Streamed Artists Preview](Screenshots/Most-Streamed-Artists.png)
@@ -59,17 +78,6 @@ RANK_UNIQUE(SUM([Streams]), 'desc')
 ```
 
 This calculated field ranks all the artists in the dataset by the sum of their total streams and then orders them in descending order. In this way the artists with the most streams are shown at the top. I then moveed this field into the filter tab and selcted 'At Most: 3' in order to show on the top 3 artists.
-
-Name Search: 
-
-```
-IF ISNULL([Artist Name Search]) OR [Artist Name Search] = "none" THEN TRUE
-ELSE
-  CONTAINS(LOWER([Artist Name]), LOWER([Artist Name Search]))
-END
-```
-
-This calculated field specifies that if the search bar is empty or the word 'none'is typed, then it will be set to TRUE meaning that no filter will be applied and all available data will be shown. LOWER([Artist Name Search]) then converts whatever is typed into the search bar into lowercase. the CONTAINS clause then compares this to the artist name column, which has also been converted to lower case, and if it finds a match it will filter the dashboard by that artist's name.
 
 # Most Streamed Songs
 
@@ -88,13 +96,49 @@ Both of these codes are discussed above.
 
 ![Highest Energy Songs Preview](Screenshots/Highest-Energy-Songs.png)
 
+To create this bar chart I dragged 'Track Name' into rows and added 'Energy' into the rows, changing the measure to AVG.
+
+I then once again moved 2 of my calculated fields into the 'filters' tab. These were:
+
+- J - Monthly Top  5 Energy
+```
+RANK_UNIQUE(AVG([Energy%]), 'desc')
+```
+- Name Search
+
+Both of these codes are discussed above.
+
 # BPM (Beats per Minute)
 
 ![BPM (Beats Per Minute) Preview](Screenshots/Highest-BPM.png)
 
+To create this bar chart I dragged 'Track Name' into rows and added 'BPM' into the rows, changing the measure to AVG.
+
+I then once again moved 2 of my calculated fields into the 'filters' tab. These were:
+
+- J - Monthly Top  5 BPM
+```
+RANK_UNIQUE(AVG([BPM]), 'desc')
+```
+- Name Search
+
+Both of these codes are discussed above.
+
 # Number of Times Artist is Featured in Playlists
 
 ![Songs in Playlists Preview](Screenshots/Songs-in-Playlists.png)
+
+To create this bar chart I dragged 'Track Name' into rows and added 'In Spotify Playlists' into the rows, changing the measure to SUM.
+
+I then once again moved 2 of my calculated fields into the 'filters' tab. These were:
+
+- J - Monthly Top  5 Playlists
+```
+RANK_UNIQUE(SUM([In Spotify Playlists]), 'desc')
+```
+- Name Search
+
+Both of these codes are discussed above.
 
 
 # Things that could be improved
