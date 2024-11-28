@@ -19,11 +19,17 @@ The purpose of this dashboard is to allow users to delve deeper into the data be
 
 ## I created the following calculated fields that are used in many of the visuals:
 
-- J - Monthly Top 5
-- 
-
+- J - Monthly Top 5 Streams
+- J - Monthly Top 5 BPM
+- J - Monthly Top 5 Energy
+- J - Monthly Top 5 Playlists
+- Name Search
 
 ## Please read on to find detailed explanations of how I put together different aspects of this dashboard:
+
+# Release Month Buttons
+
+![Most Streamed Artists Preview](Screenshots/Tracks-per-Month.png)
 
 # Most Streamed Artists
 
