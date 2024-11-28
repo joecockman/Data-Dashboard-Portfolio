@@ -1,6 +1,6 @@
 # Tableau Dashboard - Spotify Streaming Data
 
-![Dashboard Preview](Spotify-Streaming-Data-Dashboard.png)
+![Dashboard Preview](Screenshots/Spotify-Streaming-Data-Dashboard.png)
 
 ## The purpose of this dashboard is to allow users to delve deeper into the data behind almost 1000 of Spotify's most streamed songs. The dashboard is built around a dataset downloaded from Kaggle, titled: 'Spotify Most Streamed Songs'. This file can be found above in the repository. 
 
