@@ -17,7 +17,10 @@ The purpose of this dashboard is to allow users to delve deeper into the data be
 - Release Month
 - Artist Name Search Bar
 
+## I created the following calculated fields that are used in many of the visuals:
 
+- J - Monthly Top 5
+- 
 
 
 ## Please read on to find detailed explanations of how I put together different aspects of this dashboard:
@@ -26,7 +29,25 @@ The purpose of this dashboard is to allow users to delve deeper into the data be
 
 ![Most Streamed Artists Preview](Screenshots/Most-Streamed-Artists.png)
 
-To create the 'Most Streamed Artists' visual at the top of the dashboard, I moved 
+To create the 'Most Streamed Artists' visual at the top of the dashboard, I moved 'Artist Name' into columns and dragged 'Streams' into tooltips before changing its measure to SUM. I then created some filters for this sheet.
+
+J - Monthly Top 5 Streams:   
+```
+RANK_UNIQUE(SUM([Streams]), 'desc')
+```
+
+This calculated field ranks all the artists in the dataset by the sum of their total streams and then orders them in descending order. In this way the artists with the most streams are shown at the top. I then moveed this field into the filter tab and selcted 'At Most: 3' in order to show on the top 3 artists.
+
+Name Search: 
+
+```
+IF ISNULL([Artist Name Search]) OR [Artist Name Search] = "none" THEN TRUE
+ELSE
+  CONTAINS(LOWER([Artist Name]), LOWER([Artist Name Search]))
+END
+```
+
+This calculated field specifies that if the search bar is empty or the word 'none'is typed, then it will be set to TRUE meaning that no filter will be applied and all available data will be shown. LOWER([Artist Name Search]) then converts whatever is typed into the search bar into lowercase. the CONTAINS clause then compares this to the artist name column, which has also been converted to lower case, and if it finds a match it will filter the dashboard by that artist's name.
 
 # Most Streamed Songs
 
