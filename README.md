@@ -45,6 +45,7 @@ Finally, I added the sheet to my dashboard and selected 'use as filter'. In this
 
 #  Name Search
 
+![Artist Name Search Preview](Screenshots/Artist-Name-Search.png)
 
 # Most Streamed Artists
 
